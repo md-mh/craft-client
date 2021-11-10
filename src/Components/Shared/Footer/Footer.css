@@ -1,0 +1,10 @@
+footer{
+    background-image: url("https://i.ibb.co/r7xn5FN/footer.png");
+    background-repeat: no-repeat;
+    background-size: cover;  
+    color: rgb(66, 2, 2);
+}
+footer svg{
+    color: rgb(70, 27, 27);
+    margin: 5px 10px;
+}
