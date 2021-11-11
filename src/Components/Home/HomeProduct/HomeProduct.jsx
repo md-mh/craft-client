@@ -8,7 +8,7 @@ const HomeProduct = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/show/')
+        fetch('https://stormy-fjord-37446.herokuapp.com/product/')
             .then(res => res.json())
             .then(data => setServices(data));
 

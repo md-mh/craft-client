@@ -7,7 +7,7 @@ import './ProductItem.css'
 
 const ProductItem = (props) => {
     // take data using props 
-    const { _id, place, img, location, days, price } = props.service;
+    const { _id, title, img, price, details } = props.service;
 
     return (
         <Col>
@@ -15,15 +15,13 @@ const ProductItem = (props) => {
             <Card className="card">
                 <Card.Img variant="top" src={img} className="card-img" />
                 <Card.Body>
-                    <Card.Title className="">{place}</Card.Title>
-                    <h5 className="text-info"><span className="fw-bold">Location:</span> {location}</h5>
+                    <Card.Title className="">{title}</Card.Title>
+                    <p><span className="fw-bold">Details:</span> {details.slice(0, 200)}</p>
                     <div className="d-flex justify-content-between">
-                        <p><span className="fw-bold">Days:</span> {days}</p>
-                        <p><span className="fw-bold">Cost:</span> ${price}/Person</p>
+                        <p><span className="fw-bold">Cost:</span> {price}tk</p>
+                        <Link to={`/service/${_id}`}> <Button variant="info"> See Details </Button> </Link>
                     </div>
-                    <Link to={`/service/${_id}`}>
-                        <Button variant="info"> See Details </Button>
-                    </Link>
+
                 </Card.Body>
             </Card>
         </Col >

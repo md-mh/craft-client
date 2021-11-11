@@ -9,40 +9,32 @@ const AddProduct = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
 
-        axios.post('http://localhost:5000/show', data)
-        alert('Add Place Successfully');
+        axios.post('https://stormy-fjord-37446.herokuapp.com/product/', data)
+        alert('Add Product Successfully');
         reset();
     }
     return (
         <Container>
-            <Row className="justify-content-center my-5">
-                <Col md={8}>
-                    <h1>Add a Place</h1>
+            <Row className="justify-content-center">
+                <Col md={10}>
+                    <h2 className="text-center">Add a Product</h2>
                     <Form onSubmit={handleSubmit(onSubmit)}>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>Write a Travel Place</Form.Label>
-                            <Form.Control type="text" {...register("place")} placeholder="Write a Travel Place" />
+                            <Form.Label>Product Name</Form.Label>
+                            <Form.Control type="text" {...register("title")} placeholder="Product Name" />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>Traveling Place Location</Form.Label>
-                            <Form.Control type="text" {...register("location")} placeholder="Traveling Place Location" />
+                            <Form.Label>Product Details</Form.Label>
+                            <Form.Control as="textarea" {...register("details")} placeholder="Write Product details" style={{ height: '150px' }} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>Traveling days</Form.Label>
-                            <Form.Control type="number" {...register("days")} placeholder="Traveling days" />
+                            <Form.Label>Product Price</Form.Label>
+                            <Form.Control type="number" {...register("price")} placeholder="Product Price" />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>Travel Cost</Form.Label>
-                            <Form.Control type="number" {...register("price")} placeholder="Travel Cost ($)" />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>Details</Form.Label>
-                            <Form.Control as="textarea" {...register("details")} placeholder="Write a details about this Place" style={{ height: '150px' }} />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>Cover image url</Form.Label>
-                            <Form.Control type="url"  {...register("img")} placeholder="Cover image url" />
+                            <Form.Label>Product image url</Form.Label>
+                            <Form.Control type="url"  {...register("img")} placeholder="Product image url" />
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Submit

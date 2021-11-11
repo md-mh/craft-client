@@ -11,6 +11,10 @@ img{
 p{
   text-align: justify;
 }
+.featureImg{
+  width: 35px;
+  height: 35px;
+}
 .spinner{
   text-align: center;
   position: sticky;
