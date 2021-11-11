@@ -10,7 +10,7 @@ const MyOrder = () => {
     const [orders, setOrders] = useState([]);
     const [myorder, setMyorder] = useState([]);
     useEffect(() => {
-        fetch('https://pure-plains-81807.herokuapp.com/order')
+        fetch('https://stormy-fjord-37446.herokuapp.com/order')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
@@ -23,33 +23,34 @@ const MyOrder = () => {
 
     // Delete an order 
     const handleDelete = id => {
-        fetch(`https://pure-plains-81807.herokuapp.com/order/${id}`, {
-            method: "DELETE"
-        })
-        alert("Deleted");
-        const remaining = orders.filter(data => data._id !== id);
-        setOrders(remaining);
-
+        const confirm = window.confirm("Are you wants to delete ?");
+        if (confirm) {
+            fetch(`https://stormy-fjord-37446.herokuapp.com/order/${id}`, {
+                method: "DELETE"
+            })
+            const remaining = orders.filter(data => data._id !== id);
+            setOrders(remaining);
+        }
     }
     return (
         <Container>
             <Row className="justify-content-center my-5">
-                <Col md={10}>
+                <Col md={11}>
                     <Table>
                         <thead>
                             <tr>
-                                <th>Place</th>
+                                <th>Product</th>
                                 <th>Name</th>
-                                <th>Phone</th>
+                                <th>Status</th>
                                 <th>Remove</th>
                             </tr>
                         </thead>
                         {
                             myorder.map(order => <tbody key={order._id} order={order}>
                                 <tr>
-                                    <td>{order.place}</td>
+                                    <td>{order.title}</td>
                                     <td>{order.name}</td>
-                                    <td>{order.mobile}</td>
+                                    <td> <Button className="btn-warning">{order.status}</Button> </td>
                                     <td><Button className="btn-danger" onClick={() => handleDelete(order._id)}>Delete</Button></td>
                                 </tr>
                             </tbody>)

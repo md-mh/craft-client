@@ -5,26 +5,37 @@ const ManageProduct = () => {
 
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch('https://stormy-fjord-37446.herokuapp.com/product/')
+        fetch('https://stormy-fjord-37446.herokuapp.com/product')
             .then(res => res.json())
             .then(data => setServices(data));
     }, []);
 
+    // Delete a product
     const handleDelete = id => {
         const confirm = window.confirm("Are you wants to delete?");
         if (confirm) {
             fetch(`https://stormy-fjord-37446.herokuapp.com/product/${id}`, {
                 method: "DELETE"
             })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        const remaining = services.filter(data => data._id !== id);
-                        setServices(remaining);
-                    }
-                })
+            const remaining = services.filter(data => data._id !== id);
+            setServices(remaining);
         }
     }
+    // const handleDelete = id => {
+    //     const confirm = window.confirm("Are you wants to delete?");
+    //     if (confirm) {
+    //         fetch(`https://stormy-fjord-37446.herokuapp.com/product/${id}`, {
+    //             method: "DELETE"
+    //         })
+    //             .then(res => res.json())
+    //             .then(data => {
+    //                 if (data.deletedCount > 0) {
+    //                     const remaining = services.filter(data => data._id !== id);
+    //                     setServices(remaining);
+    //                 }
+    //             })
+    //     }
+    // }
 
     return (
         <Container>

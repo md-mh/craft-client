@@ -9,7 +9,7 @@ const AddProduct = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
 
-        axios.post('https://stormy-fjord-37446.herokuapp.com/product/', data)
+        axios.post('https://stormy-fjord-37446.herokuapp.com/product', data)
         alert('Add Product Successfully');
         reset();
     }

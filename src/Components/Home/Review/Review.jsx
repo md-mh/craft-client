@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row } from 'react-bootstrap';
-import ReviewItem from './ReviewItem';
+import { Container, Carousel, Row, Col } from 'react-bootstrap';
+import Rating from 'react-rating';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 
 const Review = () => {
@@ -11,17 +12,27 @@ const Review = () => {
             .then(data => setReviews(data));
     }, []);
 
-    console.log(reviews.length);
     return (
-        <Container className="my-5 py-3">
-            <h1 className="text-center py-3">Choose Our <span className="text-primary">Craft Items</span></h1>
-            {/* Bootstrap responsive row */}
-            <Row xs={1} md={2} lg={3} className="g-4 py-4">
+        <Container className="my-5">
+            <h1 className="text-center py-5">Customer <span className="text-primary">Reviews</span></h1>
+            <Carousel variant="dark" indicators="false">
                 {
                     // mappimg data from reviews 
-                    reviews.map(service => <ReviewItem key={service._id} service={service}></ReviewItem>)
+                    reviews.map(service => <Carousel.Item key={service._id} service={service}>
+                        <Row className="justify-content-center">
+                            <Col md={7}>
+                                <div className="text-center">
+                                    <Rating className="p-2" initialRating={service.rating} fullSymbol={<AiFillStar />} emptySymbol={<AiOutlineStar />} readonly />
+                                    <p>{service.comment}</p>
+                                    <h4 className="text-end"> - {service.name}</h4>
+                                    <br /><br />
+                                </div>
+                            </Col>
+                        </Row>
+
+                    </Carousel.Item>)
                 }
-            </Row>
+            </Carousel>
         </Container>
     );
 };

@@ -2,9 +2,9 @@ import React from 'react';
 import { Spinner } from 'react-bootstrap';
 import useAuth from '../../Hooks/useAuth';
 import Banner from './Banner/Banner';
-import Blog from './Blog/Blog';
 import Contact from './Contact/Contact';
 import HomeProduct from './HomeProduct/HomeProduct';
+import Review from './Review/Review';
 
 
 // home Page 
@@ -22,7 +22,7 @@ const Home = () => {
             <>
                 <Banner></Banner>
                 <HomeProduct></HomeProduct>
-                <Blog></Blog>
+                <Review></Review>
                 <Contact></Contact>
 
             </>

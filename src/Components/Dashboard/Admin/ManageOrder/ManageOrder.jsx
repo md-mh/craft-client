@@ -9,25 +9,28 @@ const ManageOrder = () => {
     const [oneOrder, setOneOrder] = useState({});
 
     useEffect(() => {
-        fetch('https://pure-plains-81807.herokuapp.com/order')
+        fetch('https://stormy-fjord-37446.herokuapp.com/order')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
 
     // Delete an order 
     const handleDelete = id => {
-        fetch(`https://pure-plains-81807.herokuapp.com/order/${id}`, {
-            method: "DELETE"
-        })
-        alert("Deleted");
-        const remaining = orders.filter(data => data._id !== id);
-        setOrders(remaining);
-
+        const confirm = window.confirm("Are you wants to delete ?");
+        if (confirm) {
+            fetch(`https://stormy-fjord-37446.herokuapp.com/order/${id}`, {
+                method: "DELETE"
+            })
+            const remaining = orders.filter(data => data._id !== id);
+            setOrders(remaining);
+        }
     }
+
+
 
     // Update status 
     const handleUpdateStatus = id => {
-        const url = `https://pure-plains-81807.herokuapp.com/order/${id}`;
+        const url = `https://stormy-fjord-37446.herokuapp.com/order/${id}`;
 
         fetch(url)
             .then(res => res.json())
@@ -35,7 +38,7 @@ const ManageOrder = () => {
         console.log(oneOrder.status);
         if (oneOrder.status === "Pending") {
             oneOrder.status = "Approved";
-            const updateOrder = { name: oneOrder.name, email: oneOrder.email, place: oneOrder.place, mobile: oneOrder.mobile, members: oneOrder.members, address: oneOrder.address, status: oneOrder.status };
+            const updateOrder = { name: oneOrder.name, email: oneOrder.email, title: oneOrder.title, mobile: oneOrder.mobile, price: oneOrder.price, address: oneOrder.address, status: oneOrder.status };
             setOneOrder(updateOrder);
             setOrders(updateOrder);
             console.log(oneOrder.status);
@@ -57,13 +60,13 @@ const ManageOrder = () => {
     return (
         <Container>
             <Row className="justify-content-center my-5">
-                <Col md={10}>
+                <Col>
                     <Table>
                         <thead>
                             <tr>
-                                <th>Place</th>
                                 <th>Name</th>
-                                <th>Phone</th>
+                                <th>User</th>
+                                <th>Email</th>
                                 <th>Status</th>
                                 <th>Remove</th>
                             </tr>
@@ -71,9 +74,9 @@ const ManageOrder = () => {
                         {
                             orders.map(order => <tbody key={order._id} order={order}>
                                 <tr>
-                                    <td>{order.place}</td>
+                                    <td>{order.title}</td>
                                     <td>{order.name}</td>
-                                    <td>{order.mobile}</td>
+                                    <td>{order.email}</td>
                                     <td> <Button className="btn-warning" onClick={() => handleUpdateStatus(order._id)}>{order.status}</Button> </td>
                                     <td><Button className="btn-danger" onClick={() => handleDelete(order._id)}>Delete</Button></td>
                                 </tr>
