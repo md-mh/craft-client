@@ -5,44 +5,27 @@ const ManageProduct = () => {
 
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/product/')
+        fetch('https://stormy-fjord-37446.herokuapp.com/product/')
             .then(res => res.json())
             .then(data => setServices(data));
     }, []);
 
-    // const handleDelete = id => {
-    //     const confirm = window.confirm("Press a button!");
-    //     if (confirm) {
-    //         fetch(`http://localhost:5000/product/${id}`, {
-    //             method: "DELETE"
-    //         })
-    //             .then(res => res.json())
-    //             .then(data => {
-    //                 if (data.deletedCount > 0) {
-    //                     const remaining = services.filter(data => data._id !== id);
-    //                     setServices(remaining);
-    //                 }
-    //             })
-    //     }
-    // }
-    //DELETING AN USER 
     const handleDelete = id => {
-        const proceed = window.confirm('Are you sure you want to delete?');
-        if (proceed) {
-            const url = `https://stormy-fjord-37446.herokuapp.com/product/${id}`;
-            fetch(url, {
-                method: 'DELETE'
+        const confirm = window.confirm("Are you wants to delete?");
+        if (confirm) {
+            fetch(`https://stormy-fjord-37446.herokuapp.com/product/${id}`, {
+                method: "DELETE"
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        // alert('Data deleted successfully!');
-                        const remainigUsers = services.filter(order => order._id !== id);
-                        setServices(remainigUsers)
+                        const remaining = services.filter(data => data._id !== id);
+                        setServices(remaining);
                     }
                 })
         }
     }
+
     return (
         <Container>
             <h2 className="text-center">Manage Products</h2>
