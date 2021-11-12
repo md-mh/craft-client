@@ -11,14 +11,9 @@ const Sociallogin = () => {
     // handle login redirect 
     const location = useLocation();
     const history = useHistory();
-    const redirect_uri = location.state?.from || '/';
-
 
     const handleGoogleLogin = () => {
-        signInUsingGoogle()
-            .then(result => {
-                history.push(redirect_uri);
-            })
+        signInUsingGoogle(location, history)
     }
 
     return (

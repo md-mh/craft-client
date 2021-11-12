@@ -19,7 +19,7 @@ const ProductItem = (props) => {
                     <p><span className="fw-bold">Details:</span> {details.slice(0, 200)}</p>
                     <div className="d-flex justify-content-between">
                         <p><span className="fw-bold">Cost:</span> {price}tk</p>
-                        <Link to={`/placeOrder/${_id}`}> <Button variant="info"> See Details </Button> </Link>
+                        <Link to={`/placeOrder/${_id}`}> <Button variant="info"> Buy now </Button> </Link>
                     </div>
 
                 </Card.Body>

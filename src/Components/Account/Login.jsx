@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Button, Row, Col, Container } from 'react-bootstrap';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import Sociallogin from './Sociallogin';
 
 const Login = () => {
-    const { error, handleemail, handlepassword, signInUsingEmail } = useAuth();
+    const { error, signInUsingEmail } = useAuth();
+    const [loginData, setLoginData] = useState({});
 
     // handle login redirect 
     const location = useLocation();
     const history = useHistory();
-    const redirectUrl = location.state?.from || "/";
+
+    const handleOnBlur = e => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newLoginData = { ...loginData };
+        newLoginData[field] = value;
+        setLoginData(newLoginData);
+    }
+
 
     const handleEmailLogin = e => {
+        signInUsingEmail(loginData.email, loginData.password, location, history)
         e.preventDefault();
-        signInUsingEmail()
-            .then(result => {
-                history.push(redirectUrl);
-            })
     }
 
     return (
@@ -30,12 +36,12 @@ const Login = () => {
                     <Form onSubmit={handleEmailLogin}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control onBlur={handleemail} type="email" placeholder="Enter email" />
+                            <Form.Control name="email" onBlur={handleOnBlur} type="email" placeholder="Enter email" />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control onBlur={handlepassword} type="password" placeholder="Password" />
+                            <Form.Control name="password" onBlur={handleOnBlur} type="password" placeholder="Password" />
                         </Form.Group>
                         <p className="text-danger">{error}</p>
                         <Button variant="primary" type="submit">Submit</Button>

@@ -54,7 +54,7 @@ const PlaceOrder = () => {
 
                     <Col md={5}>
 
-                        <img src={serviceDetails?.img} alt="" />
+                        <img src={serviceDetails?.img} alt="img" />
                         <h3 className="fw-bold"> {serviceDetails?.title}</h3>
                         <p><span className="fw-bold">Details:</span> {serviceDetails?.details}</p>
                         <p><span className="fw-bold">Price:</span> {serviceDetails?.price}tk</p>
@@ -81,7 +81,7 @@ const PlaceOrder = () => {
                                 <Form.Label>Address</Form.Label>
                                 <Form.Control as="textarea" placeholder="Write your address" style={{ height: '100px' }} ref={addressRef} />
                             </Form.Group>
-                            <Button variant="info" type="submit" >Travel Now</Button>
+                            <Button variant="info" type="submit" >Place Order</Button>
                         </Form>
                     </Col>
                 </Row>

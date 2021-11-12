@@ -2,51 +2,61 @@ import { useEffect, useState } from "react";
 import initialzeAuthentization from "../Firebase/firebase.init";
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 
-
 initialzeAuthentization();
 const auth = getAuth();
 
 const useFirebase = () => {
+
     const [user, setUser] = useState({});
-    const [name, setName] = useState({});
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
 
-    const handlename = e => {
-        setName(e.target.value);
-    }
+
     const handleemail = e => {
         setEmail(e.target.value);
     }
     const handlepassword = e => {
         setPassword(e.target.value);
     }
-    const registrationUsingEmail = e => {
-        e.preventDefault();
+    const registrationUsingEmail = (name, email, password, history) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
                 setError('');
-                setUser(result.user);
+                const user = result.user;
+                setUser(user);
                 updateProfile(auth.currentUser, { displayName: name })
+                saveUser(email, name, 'POST');
+                history.replace('/');
             })
             .catch(error => {
                 setError(error.message);
             })
             .finally(() => { setLoading(false) });
     }
-    const signInUsingEmail = () => {
-        return signInWithEmailAndPassword(auth, email, password)
+    const signInUsingEmail = (email, password, location, history) => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then(result => {
+                const redirect_url = location.state?.from || '/';
+                history.push(redirect_url);
+            })
             .catch(error => {
                 setError(error.message);
             })
             .finally(() => { setLoading(false) });
     }
 
-    const signInUsingGoogle = () => {
+    const signInUsingGoogle = (location, history) => {
         const googleProvider = new GoogleAuthProvider();
-        return signInWithPopup(auth, googleProvider)
+        signInWithPopup(auth, googleProvider)
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                saveUser(user.email, user.displayName, 'PUT');
+                const redirect_uri = location.state?.from || '/';
+                history.push(redirect_uri);
+            })
             .catch(error => {
                 setError(error.message);
             })
@@ -57,6 +67,19 @@ const useFirebase = () => {
         signOut(auth)
             .then(() => { })
             .finally(() => { setLoading(false) });
+    }
+
+    const saveUser = (email, displayName, method) => {
+        const user = { email, displayName };
+        const url = 'http://localhost:5000/user';
+        fetch(url, {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
     }
 
     const unsubscribe = useEffect(() => {
@@ -74,7 +97,6 @@ const useFirebase = () => {
         user,
         error,
         loading,
-        handlename,
         handleemail,
         handlepassword,
         registrationUsingEmail,
