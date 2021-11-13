@@ -14,7 +14,7 @@ const PlaceOrder = () => {
             fetch(`https://stormy-fjord-37446.herokuapp.com/product/${id}`)
                 .then(res => res.json())
                 .then(data => setServiceDetails(data))
-        }, []);
+        }, [id]);
 
     const { user } = useAuth();
 
