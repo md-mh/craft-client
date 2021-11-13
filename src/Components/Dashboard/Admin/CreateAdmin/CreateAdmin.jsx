@@ -18,6 +18,7 @@ const CreateAdmin = () => {
             body: JSON.stringify(user)
         })
         alert('User added as an Admin');
+        e.target.reset();
         e.preventDefault()
     }
     return (

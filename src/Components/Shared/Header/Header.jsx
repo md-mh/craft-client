@@ -5,7 +5,7 @@ import useAuth from '../../../Hooks/useAuth';
 import './Header.css'
 
 const Header = () => {
-    const { user, logOut } = useAuth();
+    const { user, admin, logOut } = useAuth();
     const url = `/dashboard`;
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -53,11 +53,17 @@ const Header = () => {
                     <Link className="nav-link" to={`${url}/payment`}>Payment</Link>
                     <Link className="nav-link" to={`${url}/addReview`}>Add a Review</Link>
 
-                    <hr />
-                    <Link className="nav-link" to={`${url}/manageOrder`}>Manage Order</Link>
-                    <Link className="nav-link" to={`${url}/addProduct`}>Add Product</Link>
-                    <Link className="nav-link" to={`${url}/manageProduct`}>Manage Product</Link>
-                    <Link className="nav-link" to={`${url}/createAdmin`}>Create an Admin</Link>
+                    {
+                        user.email && admin ?
+                            <span>
+                                <hr />
+                                <Link className="nav-link" to={`${url}/manageOrder`}>Manage Order</Link>
+                                <Link className="nav-link" to={`${url}/addProduct`}>Add Product</Link>
+                                <Link className="nav-link" to={`${url}/manageProduct`}>Manage Product</Link>
+                                <Link className="nav-link" to={`${url}/createAdmin`}>Create an Admin</Link>
+                            </span>
+                            : <span style={{ display: 'none' }}></span>
+                    }
 
                     <div className="text-center my-3">
                         {user.email ?

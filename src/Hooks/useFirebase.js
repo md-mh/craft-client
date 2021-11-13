@@ -8,18 +8,11 @@ const auth = getAuth();
 const useFirebase = () => {
 
     const [user, setUser] = useState({});
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [admin, setAdmin] = useState(false)
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
 
 
-    const handleemail = e => {
-        setEmail(e.target.value);
-    }
-    const handlepassword = e => {
-        setPassword(e.target.value);
-    }
     const registrationUsingEmail = (name, email, password, history) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
@@ -82,6 +75,12 @@ const useFirebase = () => {
             .then()
     }
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/user/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
+
     const unsubscribe = useEffect(() => {
         onAuthStateChanged(auth, user => {
             if (user) {
@@ -95,10 +94,9 @@ const useFirebase = () => {
     }, [])
     return {
         user,
+        admin,
         error,
         loading,
-        handleemail,
-        handlepassword,
         registrationUsingEmail,
         signInUsingEmail,
         signInUsingGoogle,

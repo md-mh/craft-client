@@ -28,6 +28,7 @@ function App() {
           <PrivateRoute path="/dashboard"> <Dashboard></Dashboard> </PrivateRoute>
 
 
+          <Route path='/404'><Nopage></Nopage></Route>
           <Route path='/*'><Nopage></Nopage></Route>
         </Switch>
         <Footer></Footer>

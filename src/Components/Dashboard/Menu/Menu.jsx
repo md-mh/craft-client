@@ -5,7 +5,7 @@ import './Menu.css'
 
 const Menu = () => {
     const { url } = useRouteMatch();
-    const { user, logOut } = useAuth();
+    const { user, admin, logOut } = useAuth();
 
     return (
         <>
@@ -15,11 +15,17 @@ const Menu = () => {
                 <Link className="nav-link" to={`${url}/payment`}>Payment</Link>
                 <Link className="nav-link" to={`${url}/addReview`}>Add a Review</Link>
 
-                <hr />
-                <Link className="nav-link" to={`${url}/manageOrder`}>Manage Order</Link>
-                <Link className="nav-link" to={`${url}/addProduct`}>Add Product</Link>
-                <Link className="nav-link" to={`${url}/manageProduct`}>Manage Product</Link>
-                <Link className="nav-link" to={`${url}/createAdmin`}>Create an Admin</Link>
+                {
+                    user.email && admin ?
+                        <span>
+                            <hr />
+                            <Link className="nav-link" to={`${url}/manageOrder`}>Manage Order</Link>
+                            <Link className="nav-link" to={`${url}/addProduct`}>Add Product</Link>
+                            <Link className="nav-link" to={`${url}/manageProduct`}>Manage Product</Link>
+                            <Link className="nav-link" to={`${url}/createAdmin`}>Create an Admin</Link>
+                        </span>
+                        : <span style={{ display: 'none' }}></span>
+                }
 
                 <div className="text-center my-3">
                     {user.email ?

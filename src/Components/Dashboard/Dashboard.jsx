@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Switch, useRouteMatch } from 'react-router';
+import AdminRoute from '../Route/AdminRoute';
 import PrivateRoute from '../Route/PrivateRoute';
 import AddProduct from './Admin/AddProduct/AddProduct';
 import CreateAdmin from './Admin/CreateAdmin/CreateAdmin';
@@ -29,10 +30,10 @@ const Dashboard = () => {
                         <PrivateRoute path={`${path}/payment`}> <Payment></Payment> </PrivateRoute>
                         <PrivateRoute path={`${path}/addReview`}> <AddReview></AddReview> </PrivateRoute>
 
-                        <PrivateRoute path={`${path}/manageOrder`}> <ManageOrder></ManageOrder> </PrivateRoute>
-                        <PrivateRoute path={`${path}/addProduct`}> <AddProduct></AddProduct> </PrivateRoute>
-                        <PrivateRoute path={`${path}/manageProduct`}> <ManageProduct></ManageProduct> </PrivateRoute>
-                        <PrivateRoute path={`${path}/createAdmin`}> <CreateAdmin></CreateAdmin> </PrivateRoute>
+                        <AdminRoute path={`${path}/manageOrder`}> <ManageOrder></ManageOrder> </AdminRoute>
+                        <AdminRoute path={`${path}/addProduct`}> <AddProduct></AddProduct> </AdminRoute>
+                        <AdminRoute path={`${path}/manageProduct`}> <ManageProduct></ManageProduct> </AdminRoute>
+                        <AdminRoute path={`${path}/createAdmin`}> <CreateAdmin></CreateAdmin> </AdminRoute>
                     </Switch>
 
                 </Col>

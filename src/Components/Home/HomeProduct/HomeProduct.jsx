@@ -10,8 +10,7 @@ const HomeProduct = () => {
     useEffect(() => {
         fetch('https://stormy-fjord-37446.herokuapp.com/product/')
             .then(res => res.json())
-            .then(data => setServices(data));
-
+            .then(data => setServices(data.slice(0, 6)));
     }, []);
 
     console.log(services.length);
