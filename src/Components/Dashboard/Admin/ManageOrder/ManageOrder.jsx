@@ -77,7 +77,7 @@ const ManageOrder = () => {
                                     <td>{order.title}</td>
                                     <td>{order.name}</td>
                                     <td>{order.email}</td>
-                                    <td> <Button className="btn-warning" onClick={() => handleUpdateStatus(order._id)}>{order.status}</Button> </td>
+                                    <td> <Button title="Clicked Panding to Shipped" className="btn-warning" onClick={() => handleUpdateStatus(order._id)}>{order.status}</Button> </td>
                                     <td><Button className="btn-danger" onClick={() => handleDelete(order._id)}>Delete</Button></td>
                                 </tr>
                             </tbody>)

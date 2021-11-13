@@ -1,3 +1,9 @@
-# Getting Started with Create React App
+# Wood-Craft (Client Site)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live Site:  [Wood-Craft](https://craft-mh.web.app/).
+
+- This is wooden craft website
+- User can Registration this site
+- Login user got a dashboard panel
+- Customer can see there order and gives review
+- admin can upload, manage products and orders
