@@ -17,10 +17,10 @@ const ProductItem = (props) => {
                 <Card.Body>
                     <Card.Title className="">{title}</Card.Title>
                     <p><span className="fw-bold">Details:</span> {details.slice(0, 200)}</p>
-                    <div className="d-flex justify-content-between">
-                        <p><span className="fw-bold">Cost:</span> {price}tk</p>
+                    <Card.Footer className="d-flex justify-content-between align-items-center">
+                        <span><span className="fw-bold">Cost:</span> {price}tk</span>
                         <Link to={`/placeOrder/${_id}`}> <Button variant="info"> Buy now </Button> </Link>
-                    </div>
+                    </Card.Footer>
 
                 </Card.Body>
             </Card>

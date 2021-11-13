@@ -30,7 +30,9 @@ const Login = () => {
         <Container>
             <br /><h2 className="text-center">Please Login</h2>
             <Row className="my-5 d-flex align-items-center">
-
+                <Col md={{ span: 4, offset: 1 }}>
+                    <img src="https://i.ibb.co/GsZbgSF/login.png" alt="Login-img" />
+                </Col>
                 <Col md={{ span: 4, offset: 1 }}>
                     {/* login form  */}
                     <Form onSubmit={handleEmailLogin}>
@@ -50,9 +52,6 @@ const Login = () => {
                     </Form>
                     {/* social login component  */}
                     <Sociallogin></Sociallogin>
-                </Col>
-                <Col md={{ span: 4, offset: 1 }}>
-                    <img src="https://i.ibb.co/d4LYbVq/login.png" alt="Login-img" />
                 </Col>
             </Row>
 

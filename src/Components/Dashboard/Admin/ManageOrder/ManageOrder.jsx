@@ -37,7 +37,7 @@ const ManageOrder = () => {
             .then(data => setOneOrder(data));
         console.log(oneOrder.status);
         if (oneOrder.status === "Pending") {
-            oneOrder.status = "Approved";
+            oneOrder.status = "Shipped";
             const updateOrder = { name: oneOrder.name, email: oneOrder.email, title: oneOrder.title, mobile: oneOrder.mobile, price: oneOrder.price, address: oneOrder.address, status: oneOrder.status };
             setOneOrder(updateOrder);
             setOrders(updateOrder);
@@ -64,7 +64,7 @@ const ManageOrder = () => {
                     <Table>
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Product</th>
                                 <th>User</th>
                                 <th>Email</th>
                                 <th>Status</th>

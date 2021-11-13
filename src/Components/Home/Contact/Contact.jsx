@@ -8,7 +8,7 @@ const Contact = () => {
         <Container>
             <Row className="justify-content-center my-5 py-3">
                 <Col md={8}>
-                    <h1 className="text-center "><span className="text-primary">Contact</span> US</h1> <br />
+                    <h1 className="text-center "><span className="text-primary">Contact</span> Us</h1> <br />
                     <Form>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Your Name</Form.Label>

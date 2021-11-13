@@ -30,6 +30,10 @@ const Registration = () => {
 
             <Row className="my-5 d-flex align-items-center">
                 <Col md={{ span: 4, offset: 1 }}>
+                    <img src="https://i.ibb.co/GsZbgSF/login.png" alt="Login-img" />
+                </Col>
+
+                <Col md={{ span: 4, offset: 1 }}>
                     {/* registration form  */}
                     <Form onSubmit={handleRegistration}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -53,9 +57,6 @@ const Registration = () => {
                     </Form>
                     {/* social login component  */}
                     <Sociallogin></Sociallogin>
-                </Col>
-                <Col md={{ span: 4, offset: 1 }}>
-                    <img src="https://i.ibb.co/d4LYbVq/login.png" alt="Login-img" />
                 </Col>
             </Row>
         </Container>
