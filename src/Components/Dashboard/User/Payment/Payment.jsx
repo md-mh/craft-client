@@ -1,5 +1,7 @@
 import React from 'react';
 
+
+// Payment system components
 const Payment = () => {
     return (
         <div>

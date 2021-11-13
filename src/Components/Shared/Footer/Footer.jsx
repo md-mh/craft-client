@@ -4,6 +4,7 @@ import { FiFacebook, FiInstagram, FiLinkedin, FiTwitter, } from 'react-icons/fi'
 import { SiMastercard, SiPayoneer, SiPaypal, SiVisa } from 'react-icons/si';
 import './Footer.css'
 
+//Foter Components
 const Footer = () => {
     return (
         <footer className="py-4 mt-5">

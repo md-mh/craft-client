@@ -3,7 +3,7 @@ import { Button, Card, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './ProductItem.css'
 
-// Home page single service item components
+// Single Product item components
 
 const ProductItem = (props) => {
     // take data using props 

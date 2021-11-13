@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Col, Container, Form, Row, Button } from 'react-bootstrap';
 
 
-// Add a Place page Components 
+// Add a Product page Components 
 const AddProduct = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {

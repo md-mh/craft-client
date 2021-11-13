@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import ProductItem from '../Shared/ProductItem/ProductItem';
 
-// Home page services component  
+// Product Page component  
 
 const Products = () => {
 

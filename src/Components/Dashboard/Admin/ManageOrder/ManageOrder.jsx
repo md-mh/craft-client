@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Col, Container, Row, Table, Button } from 'react-bootstrap';
 
 
-// Manage Tour page Components 
+// Manage Order page Components 
 const ManageOrder = () => {
 
     const [orders, setOrders] = useState([]);
@@ -59,7 +59,8 @@ const ManageOrder = () => {
     }
     return (
         <Container>
-            <Row className="justify-content-center my-5">
+            <Row className="justify-content-center my-3">
+                <h2 className="text-center">Manage Order</h2>
                 <Col>
                     <Table>
                         <thead>

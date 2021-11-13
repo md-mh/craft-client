@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row, Table, Button } from 'react-bootstrap';
 
+
+// Manage Product Components
 const ManageProduct = () => {
 
     const [services, setServices] = useState([]);

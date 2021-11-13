@@ -20,7 +20,6 @@ const Login = () => {
         setLoginData(newLoginData);
     }
 
-
     const handleEmailLogin = e => {
         signInUsingEmail(loginData.email, loginData.password, location, history)
         e.preventDefault();
@@ -33,6 +32,7 @@ const Login = () => {
                 <Col md={{ span: 4, offset: 1 }}>
                     <img src="https://i.ibb.co/GsZbgSF/login.png" alt="Login-img" />
                 </Col>
+
                 <Col md={{ span: 4, offset: 1 }}>
                     {/* login form  */}
                     <Form onSubmit={handleEmailLogin}>

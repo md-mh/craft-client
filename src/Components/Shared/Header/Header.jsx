@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import './Header.css'
 
+// Header Components
 const Header = () => {
     const { user, admin, logOut } = useAuth();
     const url = `/dashboard`;
@@ -43,7 +44,7 @@ const Header = () => {
                 </Container>
             </Navbar>
 
-
+            {/* Dashboard Menu Components for Mobile Device */}
             <Offcanvas show={show} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>DashBoard Menu</Offcanvas.Title>

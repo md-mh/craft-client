@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Col, Container, Form, Row, Button } from 'react-bootstrap';
 import useAuth from '../../../../Hooks/useAuth';
 
+
+// Add Customer Review Components
 const AddReview = () => {
     const { user } = useAuth();
     const { register, handleSubmit, reset } = useForm();

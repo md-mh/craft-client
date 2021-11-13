@@ -3,7 +3,7 @@ import { Container, Carousel, Row, Col } from 'react-bootstrap';
 import Rating from 'react-rating';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
-
+// Home Page Review Component
 const Review = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {

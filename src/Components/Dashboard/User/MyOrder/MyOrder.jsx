@@ -4,7 +4,7 @@ import useAuth from '../../../../Hooks/useAuth';
 
 
 
-// My Tour page Components 
+// My Order page Components 
 const MyOrder = () => {
     const { user } = useAuth();
     const [orders, setOrders] = useState([]);
@@ -19,7 +19,7 @@ const MyOrder = () => {
         () => {
             const foundOrder = orders.filter(order => order.email === user.email)
             setMyorder(foundOrder);
-        }, [orders])
+        }, [orders, user.email])
 
     // Delete an order 
     const handleDelete = id => {
@@ -34,7 +34,8 @@ const MyOrder = () => {
     }
     return (
         <Container>
-            <Row className="justify-content-center my-5">
+            <Row className="justify-content-center my-3">
+                <h2 className="text-center">My Order</h2>
                 <Col md={11}>
                     <Table>
                         <thead>

@@ -3,6 +3,8 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import './Menu.css'
 
+
+// Dashboard Menu Components
 const Menu = () => {
     const { url } = useRouteMatch();
     const { user, admin, logOut } = useAuth();

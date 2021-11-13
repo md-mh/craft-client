@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
-const CreateAdmin = () => {
 
+// Create Admin Components
+const CreateAdmin = () => {
 
     const emailAddress = useRef();
     const handleAddAdmin = e => {
